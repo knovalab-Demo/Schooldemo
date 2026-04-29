@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - School</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0b1f3a;
+  --primary-2:#16355d;
+  --accent:#e6f0ff;
+  --accent-2:#f5f9ff;
+  --text:#111827;
+  --muted:#566273;
+  --line:rgba(11,31,58,0.10);
+  --shadow-sm:0 10px 30px rgba(9, 30, 66, 0.06);
+  --shadow-md:0 18px 50px rgba(9, 30, 66, 0.10);
+  --shadow-lg:0 28px 80px rgba(9, 30, 66, 0.14);
+  --radius:24px;
+  --radius-lg:32px;
+  --max:1240px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+    radial-gradient(circle at top left, rgba(230,240,255,0.85), transparent 28%),
+    linear-gradient(180deg, #fbfdff 0%, #f5f8fc 100%);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+section{
+  padding:120px 20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.9s ease, transform 0.9s ease;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.container{
+  width:min(100%, var(--max));
+  margin:auto;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(230,240,255,0.88);
+  color:var(--primary);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  margin-bottom:18px;
+  border:1px solid rgba(11,31,58,0.08);
+}
+
+.section-head{
+  text-align:center;
+  margin-bottom:58px;
+}
+
+.section-head h2{
+  font-size:clamp(34px, 4vw, 52px);
+  line-height:1.02;
+  letter-spacing:-0.04em;
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+.section-head p{
+  max-width:760px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.85;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  transition:0.35s ease;
+}
+
+.navbar.scrolled{
+  background:linear-gradient(90deg, rgba(255,255,255,0.90), rgba(240,246,255,0.92));
+  box-shadow:0 18px 40px rgba(10,26,56,0.08);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(11,31,58,0.06);
+}
+
+.navbar-inner{
+  width:min(100%, var(--max));
+  margin:0 auto;
+  height:92px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.logo{
+  font-weight:800;
+  font-size:24px;
+  letter-spacing:-0.04em;
+  color:var(--primary);
+  flex-shrink:0;
+}
+
+.nav-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:1;
+}
+
+.nav-links{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.52);
+  border:1px solid rgba(11,31,58,0.06);
+  backdrop-filter:blur(12px);
+}
+
+.nav-links a{
+  position:relative;
+  z-index:2;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--text);
+  border-radius:999px;
+  transition:color 0.25s ease;
+  white-space:nowrap;
+}
+
+.nav-links a:hover{
+  color:var(--primary);
+}
+
+.nav-highlight{
+  position:absolute;
+  top:8px;
+  left:8px;
+  height:calc(100% - 16px);
+  border-radius:999px;
+  background:rgba(230,240,255,0.96);
+  box-shadow:
+    0 8px 20px rgba(11,31,58,0.08),
+    0 0 22px rgba(230,240,255,0.85);
+  transition:0.3s ease;
+  z-index:1;
+}
+
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 22px;
+  border-radius:999px;
+  background:linear-gradient(135deg, var(--primary), var(--primary-2));
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink:0;
+}
+
+.back-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+}
+
+.hamburger{
+  display:none;
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  border:1px solid rgba(11,31,58,0.10);
+  background:rgba(255,255,255,0.7);
+  color:var(--primary);
+  font-size:24px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+  width:min(100%, var(--max));
+  margin:0 auto 0;
+  padding:0 20px 16px;
+}
+
+.mobile-menu-inner{
+  background:rgba(255,255,255,0.96);
+  border:1px solid rgba(11,31,58,0.08);
+  border-radius:24px;
+  box-shadow:var(--shadow-md);
+  padding:16px;
+  backdrop-filter:blur(12px);
+}
+
+.mobile-menu a{
+  display:block;
+  padding:14px 12px;
+  border-radius:14px;
+  color:var(--text);
+  font-weight:600;
+}
+
+.mobile-menu a:hover{
+  background:var(--accent);
+  color:var(--primary);
+}
+
+.mobile-menu.show{
+  display:block;
+}
+
+/* HERO */
+
+.hero{
+  padding-top:150px;
+  padding-bottom:90px;
+  min-height:52vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,0.78), rgba(245,249,255,0.9)),
+    url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80') center/cover;
+  z-index:-1;
+}
+
+.hero-content{
+  width:min(100%, 900px);
+  margin:0 auto;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:clamp(46px, 6vw, 74px);
+  line-height:0.94;
+  letter-spacing:-0.06em;
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+.hero p{
+  max-width:660px;
+  margin:0 auto 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+}
+
+/* SPLIT */
+
+.split{
+  display:grid;
+  grid-template-columns:0.95fr 1.05fr;
+  gap:56px;
+  align-items:center;
+}
+
+.media-shell{
+  position:relative;
+}
+
+.media-shell img{
+  width:100%;
+  min-height:560px;
+  object-fit:cover;
+  border-radius:32px;
+  box-shadow:var(--shadow-lg);
+}
+
+.media-card{
+  position:absolute;
+  right:-18px;
+  bottom:28px;
+  width:220px;
+  background:rgba(255,255,255,0.94);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  border:1px solid rgba(11,31,58,0.08);
+  box-shadow:var(--shadow-md);
+  padding:18px;
+}
+
+.media-card strong{
+  color:var(--primary);
+  display:block;
+  margin-bottom:6px;
+  font-size:14px;
+}
+
+.media-card p{
+  font-size:14px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.text h2{
+  font-size:clamp(34px, 4vw, 50px);
+  color:var(--primary);
+  line-height:1.02;
+  letter-spacing:-0.05em;
+  margin-bottom:18px;
+}
+
+.text p{
+  color:var(--muted);
+  margin-bottom:16px;
+  line-height:1.85;
+  font-size:17px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 26px;
+  background:linear-gradient(135deg, var(--primary), var(--primary-2));
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+  margin-top:8px;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+}
+
+/* VALUES */
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+
+.value-card{
+  background:#fff;
+  border:1px solid rgba(11,31,58,0.08);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+}
+
+.icon-pill{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  background:var(--accent);
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:15px;
+  margin-bottom:18px;
+}
+
+.value-card h3{
+  color:var(--primary);
+  font-size:24px;
+  margin-bottom:10px;
+  letter-spacing:-0.04em;
+}
+
+.value-card p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.8;
+}
+
+/* FOCUS */
+
+.focus-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:34px;
+  align-items:start;
+}
+
+.focus-panel{
+  background:#fff;
+  border:1px solid rgba(11,31,58,0.08);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:var(--shadow-sm);
+}
+
+.focus-panel h2{
+  color:var(--primary);
+  font-size:clamp(32px, 4vw, 44px);
+  line-height:1.04;
+  margin-bottom:16px;
+  letter-spacing:-0.05em;
+}
+
+.focus-panel p{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.85;
+}
+
+.bar{
+  margin-bottom:22px;
+}
+
+.bar:last-child{
+  margin-bottom:0;
+}
+
+.bar-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:10px;
+  font-weight:600;
+  color:var(--primary);
+  font-size:15px;
+}
+
+.progress{
+  height:8px;
+  background:#dde7f5;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress div{
+  height:100%;
+  background:linear-gradient(90deg, var(--primary), var(--primary-2));
+  border-radius:999px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
+}
+
+.stat{
+  background:#fff;
+  padding:28px 22px;
+  border-radius:24px;
+  text-align:center;
+  border:1px solid rgba(11,31,58,0.08);
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-md);
+}
+
+.stat h3{
+  font-size:34px;
+  color:var(--primary);
+  letter-spacing:-0.04em;
+  margin-bottom:6px;
+}
+
+.stat p{
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* JOURNEY */
+
+.journey-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+
+.journey-card{
+  background:linear-gradient(180deg, #fff, #f9fbff);
+  border:1px solid rgba(11,31,58,0.08);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.journey-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+}
+
+.journey-card h3{
+  color:var(--primary);
+  font-size:24px;
+  margin-bottom:10px;
+  letter-spacing:-0.04em;
+}
+
+.journey-card p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.8;
+}
+
+/* CTA */
+
+.cta-shell{
+  position:relative;
+  overflow:hidden;
+  border-radius:34px;
+  padding:70px 60px;
+  color:white;
+  background:
+    linear-gradient(rgba(11,31,58,0.78), rgba(11,31,58,0.78)),
+    url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80') center/cover;
+  box-shadow:var(--shadow-lg);
+}
+
+.cta-shell::before{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  top:-80px;
+  right:-60px;
+}
+
+.cta-shell h2{
+  color:white;
+  font-size:clamp(34px, 4vw, 52px);
+  line-height:1.02;
+  letter-spacing:-0.05em;
+  margin-bottom:14px;
+  max-width:760px;
+}
+
+.cta-shell p{
+  max-width:700px;
+  color:rgba(255,255,255,0.82);
+  font-size:17px;
+  margin-bottom:24px;
+}
+
+/* FOOTER */
+
+.footer{
+  background:linear-gradient(180deg, #0c1f39 0%, #08152b 100%);
+  color:white;
+  padding:96px 20px 36px;
+  opacity:1 !important;
+  transform:none !important;
+}
+
+.footer-grid{
+  width:min(100%, var(--max));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr 1fr;
+  gap:34px;
+  padding-bottom:42px;
+  border-bottom:1px solid rgba(255,255,255,0.10);
+}
+
+.footer-brand h3{
+  color:#fff;
+  font-size:28px;
+  letter-spacing:-0.04em;
+  margin-bottom:14px;
+}
+
+.footer-brand p{
+  color:rgba(255,255,255,0.72);
+  max-width:340px;
+  margin-bottom:20px;
+  line-height:1.8;
+}
+
+.footer-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.footer-chip{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.84);
+  font-size:13px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-col h4{
+  color:#fff;
+  font-size:17px;
+  margin-bottom:18px;
+  letter-spacing:-0.02em;
+}
+
+.footer-col a,
+.footer-col p{
+  display:block;
+  color:rgba(255,255,255,0.72);
+  font-size:15px;
+  margin-bottom:12px;
+  line-height:1.7;
+}
+
+.footer-col a:hover{
+  color:#fff;
+}
+
+.footer-bottom{
+  width:min(100%, var(--max));
+  margin:0 auto;
+  padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-bottom p{
+  color:rgba(255,255,255,0.58);
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+  .split,
+  .focus-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .values-grid,
+  .journey-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media(max-width:860px){
+  section{
+    padding:100px 20px;
+  }
+
+  .nav-center,
+  .back-btn{
+    display:none;
+  }
+
+  .hamburger{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .hero{
+    padding-top:130px;
+    min-height:42vh;
+  }
+
+  .hero h1{
+    font-size:44px;
+  }
+}
+
+@media(max-width:680px){
+  .values-grid,
+  .journey-grid,
+  .stats,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .media-shell img{
+    min-height:420px;
+  }
+
+  .media-card{
+    position:static;
+    width:100%;
+    margin-top:16px;
+  }
+
+  .cta-shell{
+    padding:44px 24px;
+  }
+
+  .hero p,
+  .section-head p,
+  .text p,
+  .focus-panel p{
+    font-size:16px;
+  }
+
+  .navbar-inner{
+    height:82px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <div class="logo">School Name</div>
+
+    <div class="nav-center">
+      <nav class="nav-links" id="navLinks">
+        <div class="nav-highlight" id="navHighlight"></div>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#academics">Academics</a>
+        <a href="index.html#campus">Campus</a>
+        <a href="index.html#admissions">Admissions</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+
+    <a href="index.html" class="back-btn">Back to Home</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#academics">Academics</a>
+      <a href="index.html#campus">Campus</a>
+      <a href="index.html#admissions">Admissions</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html">Back to Home</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow">About the Institution</span>
+    <h1>Building Character, Confidence, and Academic Strength</h1>
+    <p>More than a school, we are a learning community shaped by purpose, discipline, and a deep commitment to helping every child grow into their best self.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="container split">
+    <div class="media-shell">
+      <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80" alt="Students learning together">
+      <div class="media-card">
+        <strong>Our Promise</strong>
+        <p>To provide a refined educational environment where every learner feels challenged, supported, and seen.</p>
+      </div>
+    </div>
+
+    <div class="text">
+      <span class="eyebrow">Who We Are</span>
+      <h2>We Always Strive to Bring Out the Very Best</h2>
+      <p>We are committed to nurturing young minds through academic excellence, strong values, and holistic development. Every child deserves an environment where curiosity is protected, confidence is encouraged, and discipline becomes a natural part of growth.</p>
+      <p>Through experienced educators, thoughtful systems, and a supportive school culture, we help students build clarity in learning and confidence in life. Our approach is not only about achievement, but also about shaping responsible, compassionate, future-ready individuals.</p>
+      <p>Across classrooms, activities, mentorship, and community life, we create a premium educational journey that feels purposeful, balanced, and deeply human.</p>
+      <a href="index.html#contact" class="btn">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What Defines Us</span>
+      <h2>The Principles That Guide Our School</h2>
+      <p>Our identity is shaped by a strong academic vision, a culture of care, and a belief that education should prepare students not only for exams, but for life.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="icon-pill">01</div>
+        <h3>Excellence With Purpose</h3>
+        <p>We set high standards because students grow best when challenge is paired with clarity, structure, and meaningful support.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="icon-pill">02</div>
+        <h3>Care-Centered Culture</h3>
+        <p>We believe strong relationships between teachers, students, and families are central to every successful learning journey.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="icon-pill">03</div>
+        <h3>Growth Beyond the Classroom</h3>
+        <p>Character, communication, leadership, and resilience are treated as essential outcomes of a complete education.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS / FOCUS -->
+<section style="background:#f7f9fc;">
+  <div class="container focus-wrap">
+    <div class="focus-panel">
+      <span class="eyebrow">Our Focus</span>
+      <h2>What We Invest in Every Day</h2>
+      <p>Our school experience is carefully built around the areas that matter most to parents and students: rigorous academics, meaningful development, and consistent support at every stage.</p>
+
+      <div class="bar">
+        <div class="bar-row">
+          <span>Academic Excellence</span>
+          <span>90%</span>
+        </div>
+        <div class="progress"><div style="width:90%"></div></div>
+      </div>
+
+      <div class="bar">
+        <div class="bar-row">
+          <span>Holistic Development</span>
+          <span>85%</span>
+        </div>
+        <div class="progress"><div style="width:85%"></div></div>
+      </div>
+
+      <div class="bar">
+        <div class="bar-row">
+          <span>Student Support</span>
+          <span>92%</span>
+        </div>
+        <div class="progress"><div style="width:92%"></div></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>20+</h3>
+        <p>Years of Experience</p>
+      </div>
+      <div class="stat">
+        <h3>1000+</h3>
+        <p>Students Across Levels</p>
+      </div>
+      <div class="stat">
+        <h3>200+</h3>
+        <p>Faculty & Staff</p>
+      </div>
+      <div class="stat">
+        <h3>50+</h3>
+        <p>Academic & Cultural Awards</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LONGER CONTENT -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our Journey</span>
+      <h2>A School Experience Designed for Lasting Impact</h2>
+      <p>We believe the best schools do more than deliver curriculum. They create environments where students feel inspired to think deeply, participate fully, and grow with confidence.</p>
+    </div>
+
+    <div class="journey-grid">
+      <div class="journey-card">
+        <h3>Strong Academic Foundations</h3>
+        <p>From the early years onward, we place strong emphasis on conceptual understanding, communication, and disciplined learning habits that support long-term success.</p>
+      </div>
+
+      <div class="journey-card">
+        <h3>Meaningful Student Mentorship</h3>
+        <p>Every learner benefits from guidance that is personal, consistent, and designed to build both confidence and accountability.</p>
+      </div>
+
+      <div class="journey-card">
+        <h3>Balanced Personal Growth</h3>
+        <p>Through arts, sports, clubs, and community opportunities, students build leadership, empathy, resilience, and a broader sense of self.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cta-shell">
+      <span class="eyebrow" style="background:rgba(255,255,255,0.14); color:#fff; border-color:rgba(255,255,255,0.14);">Admissions</span>
+      <h2>We Are Always Ready To Help Your Child Succeed</h2>
+      <p>Discover a school environment where curiosity is encouraged, standards are high, and every student is guided toward meaningful achievement and personal growth.</p>
+      <a href="index.html#admissions" class="btn">Admissions Open</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>School Name</h3>
+      <p>A place where students grow with confidence, discover their strengths, and prepare for a future shaped by excellence and purpose.</p>
+      <div class="footer-chip-row">
+        <span class="footer-chip">Academic Excellence</span>
+        <span class="footer-chip">Holistic Growth</span>
+        <span class="footer-chip">Future Ready</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#academics">Academics</a>
+      <a href="index.html#campus">Campus</a>
+      <a href="index.html#admissions">Admissions</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <p>Primary School</p>
+      <p>Middle School</p>
+      <p>Senior School</p>
+      <p>Arts & STEM</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>+91 9876543210</p>
+      <p>school@email.com</p>
+      <p>123 Education Avenue</p>
+      <p>City Name, India</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 School Name. All rights reserved.</p>
+    <p>Built for premium educational institutions.</p>
+  </div>
+</footer>
+
+<script>
+// navbar scroll
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll",()=>{
+  if(window.scrollY>40){
+    navbar.classList.add("scrolled");
+  }else{
+    navbar.classList.remove("scrolled");
+  }
+});
+
+// highlight
+const navLinks=document.getElementById("navLinks");
+const links=navLinks ? navLinks.querySelectorAll("a") : [];
+const highlight=document.getElementById("navHighlight");
+
+function moveHighlight(el){
+  if(!el || !navLinks || !highlight) return;
+  const r=el.getBoundingClientRect();
+  const p=navLinks.getBoundingClientRect();
+  highlight.style.width=r.width+"px";
+  highlight.style.transform=`translateX(${r.left-p.left}px)`;
+}
+
+links.forEach(l=>{
+  l.addEventListener("mouseenter",()=>moveHighlight(l));
+  l.addEventListener("focus",()=>moveHighlight(l));
+});
+
+window.addEventListener("load",()=>{
+  if(links.length) moveHighlight(links[0]);
+});
+window.addEventListener("resize",()=>{
+  if(links.length) moveHighlight(links[0]);
+});
+
+// mobile menu
+const ham=document.getElementById("hamburger");
+const mob=document.getElementById("mobileMenu");
+ham.addEventListener("click",()=>mob.classList.toggle("show"));
+mob.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>mob.classList.remove("show"));
+});
+
+// scroll animation
+const sections=document.querySelectorAll("section");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+},{threshold:0.15});
+
+sections.forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
