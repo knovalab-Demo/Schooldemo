@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium School Template</title>
+
+<style>
+:root {
+  --primary: #0b1f3a;
+  --accent: #e6f0ff;
+  --text: #111;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  color:var(--text);
+  background:#fff;
+  overflow-x:hidden;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+section{
+  padding:90px 20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:sticky;
+  top:0;
+  width:100%;
+  z-index:1000;
+  transition:0.4s;
+}
+
+.navbar-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+}
+
+.navbar.transparent{
+  background:transparent;
+}
+
+.navbar.scrolled{
+  background:linear-gradient(to right, rgba(255,255,255,0.95), rgba(240,245,255,0.95));
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+  font-weight:bold;
+  font-size:22px;
+  letter-spacing:0.2px;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  position:relative;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--text);
+  padding:8px 10px;
+  font-weight:600;
+}
+
+.highlight{
+  position:absolute;
+  height:38px;
+  background:var(--accent);
+  border-radius:20px;
+  transition:0.3s;
+  z-index:-1;
+}
+
+.hamburger{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  position:absolute;
+  top:72px;
+  left:0;
+  width:100%;
+  background:white;
+  display:none;
+  flex-direction:column;
+  padding:20px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.06);
+}
+
+.mobile-menu a{
+  text-decoration:none;
+  color:var(--text);
+  padding:12px 0;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.mobile-menu.show{
+  display:flex;
+}
+
+/* HERO */
+
+.hero{
+  min-height:calc(100vh - 90px);
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:40px;
+  align-items:center;
+  padding-top:40px;
+  padding-bottom:40px;
+}
+
+.hero-copy span{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--accent);
+  color:var(--primary);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(42px, 6vw, 68px);
+  line-height:0.95;
+  margin-bottom:20px;
+  color:var(--primary);
+}
+
+.hero p{
+  font-size:18px;
+  margin-bottom:32px;
+  max-width:560px;
+  color:#334;
+  opacity:0.82;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:white;
+  padding:15px 30px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(11,31,58,0.22);
+}
+
+.btn-secondary{
+  border:1px solid #d5dfef;
+  color:var(--primary);
+  padding:15px 30px;
+  border-radius:40px;
+  text-decoration:none;
+  transition:0.3s;
+  background:#fff;
+}
+
+.btn-secondary:hover{
+  background:var(--accent);
+  transform:translateY(-3px);
+}
+
+.hero-right{
+  position:relative;
+}
+
+.hero-image{
+  width:100%;
+  min-height:520px;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 24px 60px rgba(0,0,0,0.12);
+}
+
+.hero-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.hero-card{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(8px);
+  border-radius:18px;
+  padding:16px 18px;
+  max-width:240px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+.hero-card h4{
+  color:var(--primary);
+  margin-bottom:6px;
+}
+
+.hero-card p{
+  font-size:14px;
+  color:#334;
+  opacity:0.78;
+}
+
+/* SHARED */
+
+.section-kicker{
+  display:inline-block;
+  margin-bottom:14px;
+  color:var(--primary);
+  background:var(--accent);
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1.3px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:18px;
+  font-size:40px;
+  color:var(--primary);
+}
+
+.section-subtitle{
+  max-width:740px;
+  margin:0 auto 54px;
+  text-align:center;
+  color:#445;
+  opacity:0.78;
+  line-height:1.8;
+}
+
+/* STATEMENT */
+
+.statement-box{
+  background:linear-gradient(135deg, #f7faff, #edf4ff);
+  border:1px solid #e3ebf7;
+  border-radius:26px;
+  padding:46px 32px;
+  text-align:center;
+}
+
+.statement-box h2{
+  color:var(--primary);
+  margin-bottom:14px;
+  font-size:36px;
+}
+
+.statement-box p{
+  max-width:720px;
+  margin:auto;
+  color:#445;
+  opacity:0.8;
+}
+
+/* ABOUT */
+
+.split{
+  display:grid;
+  grid-template-columns:0.95fr 1.05fr;
+  gap:36px;
+  align-items:center;
+}
+
+.image-frame{
+  border-radius:24px;
+  overflow:hidden;
+  min-height:420px;
+  box-shadow:0 18px 45px rgba(0,0,0,0.1);
+}
+
+.image-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.about-copy h2,
+.content-block h2{
+  color:var(--primary);
+  font-size:38px;
+  margin-bottom:16px;
+}
+
+.about-copy p,
+.content-block p{
+  color:#445;
+  opacity:0.8;
+  margin-bottom:14px;
+}
+
+.about-points{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:14px;
+  margin-top:22px;
+}
+
+.about-points div{
+  background:#f7f9fc;
+  border:1px solid #e7edf7;
+  border-radius:16px;
+  padding:16px;
+  color:var(--primary);
+  font-weight:600;
+}
+
+/* GRID CARDS */
+
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  padding:24px;
+  border:1px solid #eee;
+  border-radius:20px;
+  background:white;
+  transition:0.3s;
+  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#dfe8f7;
+}
+
+.card h3{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#445;
+  opacity:0.76;
+  font-size:15px;
+}
+
+.icon-badge{
+  width:52px;
+  height:52px;
+  border-radius:16px;
+  background:var(--accent);
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+/* LIGHT SECTION */
+
+.light{
+  background:#f7f9fc;
+}
+
+/* PROGRAMS */
+
+.program-card{
+  background:#fff;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid #e9eef5;
+  box-shadow:0 10px 28px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.program-card:hover{
+  transform:translateY(-6px);
+}
+
+.program-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+}
+
+.program-copy{
+  padding:18px;
+}
+
+.program-copy h3{
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.program-copy p{
+  color:#445;
+  opacity:0.76;
+  font-size:15px;
+}
+
+/* CAMPUS */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:18px;
+}
+
+.gallery-grid .gallery-item{
+  min-height:240px;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+}
+
+.gallery-grid .gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.gallery-grid .gallery-item.large{
+  min-height:500px;
+}
+
+.gallery-label{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  background:rgba(255,255,255,0.92);
+  color:var(--primary);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
+
+/* STUDENT LIFE */
+
+.life-card{
+  position:relative;
+  min-height:260px;
+  border-radius:22px;
+  overflow:hidden;
+  color:white;
+}
+
+.life-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.life-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(11,31,58,0.08), rgba(11,31,58,0.75));
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:22px;
+}
+
+.life-overlay h3{
+  margin-bottom:8px;
+}
+
+/* TESTIMONIALS */
+
+.carousel{
+  overflow:hidden;
+}
+
+.carousel-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  animation:scroll 40s linear infinite;
+}
+
+.test-card{
+  min-width:280px;
+  max-width:280px;
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  border:1px solid #edf1f7;
+}
+
+.test-card .person{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.test-card img{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.test-card h4{
+  color:var(--primary);
+  margin-bottom:2px;
+}
+
+.test-card p{
+  color:#445;
+  opacity:0.76;
+  font-size:15px;
+}
+
+@keyframes scroll{
+  0%{ transform:translateX(0);}
+  100%{ transform:translateX(-50%);}
+}
+
+/* ADMISSIONS */
+
+.process{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:20px;
+}
+
+.step{
+  background:#fff;
+  border:1px solid #e6edf7;
+  border-radius:22px;
+  padding:28px 22px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+}
+
+.step-number{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+.step h3{
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+/* CONTACT */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:0.95fr 1.05fr;
+  gap:24px;
+}
+
+.contact-card{
+  background:#f7f9fc;
+  border:1px solid #e5ebf5;
+  border-radius:24px;
+  padding:28px;
+}
+
+.contact-card h3{
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+.contact-card p{
+  color:#445;
+  opacity:0.8;
+  margin-bottom:10px;
+}
+
+.map-frame{
+  min-height:320px;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid #e5ebf5;
+}
+
+.map-frame iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+/* FOOTER */
+
+.footer{
+  background:var(--primary);
+  color:white;
+  padding:40px 20px;
+}
+
+.footer p{
+  opacity:0.9;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+  .hero,
+  .split,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid .gallery-item.large{
+    min-height:320px;
+  }
+
+  .process{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+  .hero{
+    text-align:center;
+  }
+  .hero p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .hero-buttons{
+    justify-content:center;
+  }
+  .hero-image{
+    min-height:380px;
+  }
+  .about-points{
+    grid-template-columns:1fr;
+  }
+  .section-title{
+    font-size:32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar transparent" id="navbar">
+  <div class="navbar-inner container">
+    <div class="logo">School Name</div>
+    <div class="nav-links" id="navLinks">
+      <div class="highlight" id="highlight"></div>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#campus">Campus</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">☰</div>
+  </div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#academics">Academics</a>
+  <a href="#campus">Campus</a>
+  <a href="#admissions">Admissions</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero container" id="home">
+  <div class="hero-copy">
+    <span>Premier Education</span>
+    <h1>Shaping the Future Through Excellence</h1>
+    <p>Premium institution focused on academic achievement, confident leadership, and holistic development from the early years through senior school.</p>
+    <div class="hero-buttons">
+      <a href="#academics" class="btn-primary">Explore Academics</a>
+      <a href="#admissions" class="btn-secondary">Admissions Open</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80" alt="Students in school campus">
+    </div>
+    <div class="hero-card">
+      <h4>Future-Ready Learning</h4>
+      <p>Balanced education with academics, athletics, arts, and life skills.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="container">
+  <div class="statement-box">
+    <h2>A Tradition of Excellence</h2>
+    <p>We nurture curious minds, strong values, and confident learners through a modern academic environment grounded in discipline, creativity, and community.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="container" id="about">
+  <div class="split">
+    <div class="image-frame">
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80" alt="School building">
+    </div>
+    <div class="about-copy">
+      <span class="section-kicker">About Us</span>
+      <h2>Learning With Purpose, Growing With Confidence</h2>
+      <p>Our school blends academic rigor with a supportive learning culture where every student is encouraged to think independently, participate actively, and grow into a well-rounded individual.</p>
+      <p>From foundational years to senior grades, we create pathways for excellence through dedicated teachers, strong mentoring, and a campus designed for growth.</p>
+
+      <div class="about-points">
+        <div>Experienced Faculty</div>
+        <div>Safe Campus Culture</div>
+        <div>Modern Learning Methods</div>
+        <div>Holistic Student Development</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="container">
+  <span class="section-kicker">Our Philosophy</span>
+  <h2 class="section-title">Our Approach to Learning</h2>
+  <p class="section-subtitle">Every child learns best in an environment that combines challenge, encouragement, structure, and opportunity.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="icon-badge">01</div>
+      <h3>Academic Excellence</h3>
+      <p>Strong conceptual learning, thoughtful assessment, and high standards across all subjects.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">02</div>
+      <h3>Character Development</h3>
+      <p>Integrity, responsibility, empathy, and discipline remain central to the student experience.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">03</div>
+      <h3>Global Perspective</h3>
+      <p>Students are encouraged to think critically, communicate clearly, and engage with the wider world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="light" id="academics">
+<div class="container">
+  <span class="section-kicker">Academic Journey</span>
+  <h2 class="section-title">Academic Programs</h2>
+  <p class="section-subtitle">A carefully designed curriculum for every stage of learning and development.</p>
+
+  <div class="card-grid">
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80" alt="Early years">
+      <div class="program-copy">
+        <h3>Early Years</h3>
+        <p>Play-based exploration, confidence building, and foundational literacy and numeracy.</p>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80" alt="Primary school">
+      <div class="program-copy">
+        <h3>Primary</h3>
+        <p>Curiosity-driven learning that strengthens communication, inquiry, and core academic skills.</p>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80" alt="Middle school">
+      <div class="program-copy">
+        <h3>Middle School</h3>
+        <p>Broader subject exposure with a focus on confidence, consistency, and analytical thinking.</p>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80" alt="Senior school">
+      <div class="program-copy">
+        <h3>Senior School</h3>
+        <p>Focused preparation for board success, competitive opportunities, and future pathways.</p>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80" alt="STEM program">
+      <div class="program-copy">
+        <h3>STEM Excellence</h3>
+        <p>Hands-on discovery through science, coding, robotics, and innovation-led learning.</p>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80" alt="Arts program">
+      <div class="program-copy">
+        <h3>Arts & Expression</h3>
+        <p>Music, visual arts, theatre, and creative platforms that unlock confidence and imagination.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FACILITIES -->
+<section class="container">
+  <span class="section-kicker">Facilities</span>
+  <h2 class="section-title">Spaces Built for Learning</h2>
+  <p class="section-subtitle">A premium campus environment that supports academics, collaboration, creativity, and wellbeing.</p>
+
+  <div class="card-grid">
+    <div class="card"><div class="icon-badge">A</div><h3>Smart Classrooms</h3><p>Technology-enabled classrooms for interactive and engaging lessons.</p></div>
+    <div class="card"><div class="icon-badge">B</div><h3>Labs</h3><p>Well-equipped science and computer labs for practical exploration.</p></div>
+    <div class="card"><div class="icon-badge">C</div><h3>Library</h3><p>A quiet, resource-rich space for reading, research, and discovery.</p></div>
+    <div class="card"><div class="icon-badge">D</div><h3>Sports</h3><p>Facilities that encourage teamwork, endurance, and healthy competition.</p></div>
+    <div class="card"><div class="icon-badge">E</div><h3>Transport</h3><p>Reliable school transport designed for safety and convenience.</p></div>
+    <div class="card"><div class="icon-badge">F</div><h3>Security</h3><p>Monitored access, attentive staff, and a secure campus atmosphere.</p></div>
+  </div>
+</section>
+
+<!-- CAMPUS -->
+<section class="light" id="campus">
+  <div class="container">
+    <span class="section-kicker">Campus Life</span>
+    <h2 class="section-title">A Campus That Inspires</h2>
+    <p class="section-subtitle">Every space is designed to feel open, purposeful, and ready for meaningful student experiences.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item large">
+        <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=1200&q=80" alt="School campus courtyard">
+        <div class="gallery-label">Central Courtyard</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80" alt="Classroom">
+        <div class="gallery-label">Classrooms</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Laboratory">
+        <div class="gallery-label">Laboratories</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80" alt="Library">
+        <div class="gallery-label">Library</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80" alt="Sports ground">
+        <div class="gallery-label">Sports Arena</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT LIFE -->
+<section class="container">
+  <span class="section-kicker">Beyond Academics</span>
+  <h2 class="section-title">Student Life</h2>
+  <p class="section-subtitle">We believe confident learners are shaped by opportunities inside and outside the classroom.</p>
+
+  <div class="card-grid">
+    <div class="life-card">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80" alt="Arts activity">
+      <div class="life-overlay">
+        <h3>Arts</h3>
+        <p>Creative spaces where expression, imagination, and confidence grow.</p>
+      </div>
+    </div>
+
+    <div class="life-card">
+      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80" alt="Sports activity">
+      <div class="life-overlay">
+        <h3>Sports</h3>
+        <p>Competitive and recreational programs that build teamwork and resilience.</p>
+      </div>
+    </div>
+
+    <div class="life-card">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Student clubs">
+      <div class="life-overlay">
+        <h3>Clubs</h3>
+        <p>Interest-based communities for leadership, collaboration, and discovery.</p>
+      </div>
+    </div>
+
+    <div class="life-card">
+      <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80" alt="Community activities">
+      <div class="life-overlay">
+        <h3>Community</h3>
+        <p>Meaningful initiatives that foster empathy, service, and responsibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="light container">
+<h2 class="section-title">Parent Testimonials</h2>
+<p class="section-subtitle">Families value the academic structure, caring teachers, and positive environment our students grow in every day.</p>
+
+<div class="carousel">
+<div class="carousel-track">
+<script>
+const testimonialData = [
+  ["https://randomuser.me/api/portraits/women/44.jpg","Parent 1","Great school with strong academics and supportive teachers."],
+  ["https://randomuser.me/api/portraits/men/32.jpg","Parent 2","Excellent environment for growth and learning."],
+  ["https://randomuser.me/api/portraits/women/68.jpg","Parent 3","The teachers genuinely care and guide every child well."],
+  ["https://randomuser.me/api/portraits/men/41.jpg","Parent 4","A well-balanced school with values, academics, and discipline."],
+  ["https://randomuser.me/api/portraits/women/26.jpg","Parent 5","My child has become more confident and engaged in learning."],
+  ["https://randomuser.me/api/portraits/men/55.jpg","Parent 6","Wonderful facilities and a very safe school environment."]
+];
+
+for(let i=0;i<2;i++){
+  testimonialData.forEach(item=>{
+    document.write(`
+      <div class='test-card'>
+        <div class='person'>
+          <img src='${item[0]}' alt='${item[1]}'>
+          <div>
+            <h4>${item[1]}</h4>
+            <p>School Parent</p>
+          </div>
+        </div>
+        <p>${item[2]}</p>
+      </div>
+    `);
+  });
+}
+</script>
+</div>
+</div>
+</section>
+
+<!-- ADMISSIONS -->
+<section class="container" id="admissions">
+<h2 class="section-title">Admissions</h2>
+<p class="section-subtitle">A clear and welcoming process designed to help families make the right decision with confidence.</p>
+
+<div class="process">
+  <div class="step">
+    <div class="step-number">1</div>
+    <h3>Enquiry</h3>
+    <p>Connect with our admissions team to understand the program, campus, and process.</p>
+  </div>
+  <div class="step">
+    <div class="step-number">2</div>
+    <h3>Interaction</h3>
+    <p>Meet our academic team for a student interaction and campus understanding session.</p>
+  </div>
+  <div class="step">
+    <div class="step-number">3</div>
+    <h3>Confirmation</h3>
+    <p>Complete documentation, secure your seat, and begin the school journey.</p>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="light" id="contact">
+<div class="container">
+  <h2 class="section-title">Contact</h2>
+  <p class="section-subtitle">Visit the campus, speak with our team, or reach out for admissions support.</p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Get in Touch</h3>
+      <p><strong>School Name</strong></p>
+      <p>123 Education Avenue, City Name</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Email: admissions@schoolname.edu</p>
+      <p>Office Hours: Mon–Sat, 8:00 AM – 4:00 PM</p>
+    </div>
+
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=school&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+<p style="text-align:center">© 2026 School</p>
+</section>
+
+<script>
+// navbar scroll
+window.addEventListener("scroll",()=>{
+ const nav=document.getElementById("navbar");
+ if(window.scrollY>50){ nav.classList.add("scrolled"); nav.classList.remove("transparent"); }
+ else{ nav.classList.add("transparent"); nav.classList.remove("scrolled"); }
+});
+
+// highlight
+const links=document.querySelectorAll(".nav-links a");
+const highlight=document.getElementById("highlight");
+function move(el){
+  const r=el.getBoundingClientRect();
+  const p=el.parentElement.getBoundingClientRect();
+  highlight.style.width=r.width+"px";
+  highlight.style.left=r.left-p.left+"px";
+}
+links.forEach(l=>{
+  l.addEventListener("mouseenter",()=>move(l));
+  l.addEventListener("click",()=>move(l));
+});
+window.onload=()=>move(links[0]);
+
+// mobile
+const ham=document.getElementById("hamburger");
+const mob=document.getElementById("mobileMenu");
+ham.onclick=()=>mob.classList.toggle("show");
+
+// close mobile menu on click
+document.querySelectorAll(".mobile-menu a").forEach(link=>{
+  link.addEventListener("click",()=>mob.classList.remove("show"));
+});
+
+// scroll anim
+const secs=document.querySelectorAll("section");
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting)x.target.classList.add("show");
+  });
+},{threshold:0.15});
+secs.forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
